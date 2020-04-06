@@ -1,0 +1,23 @@
+﻿@model MVC_KUTUPHANE.Models.Entity.TBL_KATEGORI
+
+@{
+    ViewBag.Title = "Ekle";
+    Layout = "~/Views/Shared/Layout.cshtml";
+}
+
+<h2>KATEGORİ EKLEME</h2>
+<hr />
+<form class="form-group" method="post">
+    <div>
+        <label>Kategori Adı</label>
+        <input type="text" class="form-control" name="AD"/>
+    </div>
+    <br />
+
+    <div>
+        <button class="btn btn-primary" id="btn1" type="submit">Kategori Ekle</button>
+    </div>
+</form>
+<div>
+    @Html.ActionLink("Kategorilere Dön", "Index")
+</div>

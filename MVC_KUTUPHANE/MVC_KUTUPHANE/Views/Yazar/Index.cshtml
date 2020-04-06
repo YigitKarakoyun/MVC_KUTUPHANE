@@ -1,0 +1,38 @@
+﻿@using MVC_KUTUPHANE.Models.Entity
+@model List<TBL_YAZAR>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/Layout.cshtml";
+}
+
+<h2>Yazarlar</h2>
+
+<table class="table table-bordered">
+    <tr>
+        <th>ID</th>
+        <th>AD</th>
+        <th>SOYAD</th>
+        <th>DETAYLAR</th>
+        <th>İŞLEMLER</th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>@item.ID</td>
+            <td>@item.AD</td>
+            <td>@item.SOYAD</td>
+            <td>@item.DETAY</td>
+            <td>
+                @Html.ActionLink(
+               "Sil","Sil",
+               new {id = item.ID },
+               new { @class = "btn btn-danger", onclick = "return confirm('Silmek istiyormusunuz?')" })
+                <a href="/Yazar/Getir/@item.ID" class="btn btn-warning">Güncelle</a>
+            </td>
+        </tr>
+
+    }
+</table>
+
+<a href="/Yazar/Ekle/" class="btn btn-primary">Yazar Ekle</a>
