@@ -240,6 +240,7 @@
     <Content Include="Views\Yazar\Ekle.cshtml" />
     <Content Include="Views\Yazar\Getir.cshtml" />
     <Content Include="Views\Kitap\Index.cshtml" />
+    <Content Include="Views\Kitap\Ekle.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
