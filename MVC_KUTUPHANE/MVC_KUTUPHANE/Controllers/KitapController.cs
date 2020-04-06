@@ -38,9 +38,13 @@ namespace MVC_KUTUPHANE.Controllers
         [HttpPost]
         public ActionResult Ekle(TBL_KITAP p)
         {
+            var kategori = db.TBL_KATEGORI.Where(k=>k.ID == p.ID).FirstOrDefault();
+            var yazar = db.TBL_YAZAR.Where(y=>y.ID == p.TBL_YAZAR.ID).FirstOrDefault();
+            p.TBL_KATEGORI = kategori;
+            p.TBL_YAZAR = yazar;
             db.TBL_KITAP.Add(p);
             db.SaveChanges();
-            return View();
+            return RedirectToAction("Index");
         }
 
     }
