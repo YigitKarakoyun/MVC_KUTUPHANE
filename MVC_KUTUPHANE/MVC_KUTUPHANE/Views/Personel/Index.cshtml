@@ -1,0 +1,30 @@
+﻿@using MVC_KUTUPHANE.Models.Entity
+@model List<TBL_PERSONEL>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/Layout.cshtml";
+}
+
+<h2>Personeller</h2>
+
+<table class="table table-bordered">
+    <tr>
+        <th>PERSONEL ID</th>
+        <th>PERSONEL ADI</th>
+        <th>PERSONEL İŞLEM</th>
+    </tr>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>@item.ID</td>
+            <td>@item.PERSONEL</td>
+            <td>
+                <a href="/Personel/Sil/@item.ID" class="btn btn-danger">Sil</a>
+                <a href="/Personel/Getir/@item.ID" class="btn btn-success">Güncelle</a>
+            </td>
+        </tr>
+    }
+
+</table>
+
+<a href="/Personel/Ekle/" class="btn btn-primary">Yeni Personel Ekle</a>

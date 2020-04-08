@@ -9,7 +9,7 @@ namespace MVC_KUTUPHANE.Controllers
     public class KitapController : Controller
     {
         // GET: Kitap
-        DBKUTUPHANEEntities db = new DBKUTUPHANEEntities();
+        DBKUTUPHANEEntities db = Tool.GetKUTUPHANEEntities();
         public ActionResult Index(string p)
         {
             //var temp = db.TBL_KITAP.ToList();

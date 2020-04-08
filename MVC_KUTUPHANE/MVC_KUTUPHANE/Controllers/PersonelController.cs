@@ -1,18 +1,22 @@
-﻿using MVC_KUTUPHANE.Models.Entity;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
+using System.Web;
 using System.Web.Mvc;
+using MVC_KUTUPHANE.Controllers;
+using MVC_KUTUPHANE.Models.Entity;
+
 namespace MVC_KUTUPHANE.Controllers
 {
-    public class KategoriController : Controller
+    public class PersonelController : Controller
     {
-        // GET: Kategori
+        // GET: Personel
         DBKUTUPHANEEntities db = Tool.GetKUTUPHANEEntities();
         public ActionResult Index()
         {
-            var temp = db.TBL_KATEGORI.ToList();
+            var temp = db.TBL_PERSONEL.ToList();
             return View(temp);
         }
-
         [HttpGet]
         public ActionResult Ekle()
         {
@@ -20,18 +24,21 @@ namespace MVC_KUTUPHANE.Controllers
         }
 
         [HttpPost]
-        public ActionResult Ekle(TBL_KATEGORI p)
+        public ActionResult Ekle(TBL_PERSONEL p)
         {
-            db.TBL_KATEGORI.Add(p);
+            if (!ModelState.IsValid)
+            {
+                return View("Ekle");
+            }
+            db.TBL_PERSONEL.Add(p);
             db.SaveChanges();
             return View();
-                
         }
         [HttpGet]
         public ActionResult Sil(int id)
         {
-            TBL_KATEGORI p = db.TBL_KATEGORI.Find(id);
-            db.TBL_KATEGORI.Remove(p);
+            var p = db.TBL_PERSONEL.Find(id);
+            db.TBL_PERSONEL.Remove(p);
             db.SaveChanges();
             return RedirectToAction("Index");
 
@@ -40,16 +47,16 @@ namespace MVC_KUTUPHANE.Controllers
         [HttpGet]
         public ActionResult Getir(int id)
         {
-            TBL_KATEGORI p = db.TBL_KATEGORI.Find(id);
+            var p = db.TBL_PERSONEL.Find(id);
             return View(p);
 
         }
 
         [HttpPost]
-        public ActionResult Guncelle(TBL_KATEGORI p)
+        public ActionResult Guncelle(TBL_PERSONEL p)
         {
-            TBL_KATEGORI temp = db.TBL_KATEGORI.Find(p.ID);
-            temp.AD = p.AD;
+            var temp = db.TBL_PERSONEL.Find(p.ID);
+            temp.PERSONEL = p.PERSONEL;
             db.SaveChanges();
             return RedirectToAction("Index");
 

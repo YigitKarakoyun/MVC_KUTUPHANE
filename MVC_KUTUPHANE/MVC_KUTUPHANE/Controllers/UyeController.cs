@@ -1,19 +1,21 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Drawing;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using MVC_KUTUPHANE.Models.Entity;
+using PagedList;
+using PagedList.Mvc;
 namespace MVC_KUTUPHANE.Controllers
 {
-    public class YazarController : Controller
+    public class UyeController : Controller
     {
-        // GET: Yazar
+        // GET: Uye
         DBKUTUPHANEEntities db = Tool.GetKUTUPHANEEntities();
-        public ActionResult Index()
+        public ActionResult Index(int sayfa=1)
         {
-            var temp = db.TBL_YAZAR.ToList();
+            //var temp = db.TBL_UYELER.ToList();
+            var temp = db.TBL_UYELER.ToList().ToPagedList(sayfa, 3);
             return View(temp);
         }
         [HttpGet]
@@ -21,37 +23,48 @@ namespace MVC_KUTUPHANE.Controllers
         {
             return View();
         }
+
         [HttpPost]
-        public ActionResult Ekle(TBL_YAZAR p)
+        public ActionResult Ekle(TBL_UYELER p)
         {
-            db.TBL_YAZAR.Add(p);
+            if (!ModelState.IsValid)
+            {
+                return View("Ekle");
+            }
+            db.TBL_UYELER.Add(p);
             db.SaveChanges();
             return View();
         }
-      
+        [HttpGet]
         public ActionResult Sil(int id)
         {
-            var temp = db.TBL_YAZAR.Find(id);
-            db.TBL_YAZAR.Remove(temp);
+            var p = db.TBL_UYELER.Find(id);
+            db.TBL_UYELER.Remove(p);
             db.SaveChanges();
             return RedirectToAction("Index");
+
         }
+
         [HttpGet]
         public ActionResult Getir(int id)
         {
-            var p = db.TBL_YAZAR.Find(id);
+            var p = db.TBL_UYELER.Find(id);
             return View(p);
 
         }
 
         [HttpPost]
-        public ActionResult Guncelle(TBL_YAZAR p)
+        public ActionResult Guncelle(TBL_UYELER p)
         {
-            var temp = db.TBL_YAZAR.Find(p.ID);
+            var temp = db.TBL_UYELER.Find(p.ID);
             temp.AD = p.AD;
-            temp.DETAY = p.DETAY;
             temp.SOYAD = p.SOYAD;
-          
+            temp.MAIL = p.MAIL;
+            temp.KULLANICIADI = p.KULLANICIADI;
+            temp.SIFRE = p.SIFRE;
+            temp.OKUL = p.OKUL;
+            temp.TELEFON = p.TELEFON;
+            temp.FOTOGRAF = p.FOTOGRAF;
             db.SaveChanges();
             return RedirectToAction("Index");
 
