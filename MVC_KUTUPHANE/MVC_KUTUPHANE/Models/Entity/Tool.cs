@@ -7,6 +7,7 @@ namespace MVC_KUTUPHANE.Models.Entity
 {
     public class Tool
     {
+        
         static DBKUTUPHANEEntities db = null;
         public static DBKUTUPHANEEntities GetKUTUPHANEEntities()
         {

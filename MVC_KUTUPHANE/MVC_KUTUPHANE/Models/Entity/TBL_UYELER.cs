@@ -11,8 +11,7 @@ namespace MVC_KUTUPHANE.Models.Entity
 {
     using System;
     using System.Collections.Generic;
-    using System.ComponentModel.DataAnnotations;
-
+    
     public partial class TBL_UYELER
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -23,13 +22,10 @@ namespace MVC_KUTUPHANE.Models.Entity
         }
     
         public int ID { get; set; }
-        [Required(ErrorMessage ="Adý Boþ Býrakamazsýnýz")]
-        [StringLength(20,ErrorMessage ="En Fazla 20 karakter Girebilirsiniz")]
         public string AD { get; set; }
         public string SOYAD { get; set; }
         public string MAIL { get; set; }
         public string KULLANICIADI { get; set; }
-        [StringLength(10, ErrorMessage = "En Fazla 10 karakter Girebilirsiniz")]
         public string SIFRE { get; set; }
         public string FOTOGRAF { get; set; }
         public string TELEFON { get; set; }

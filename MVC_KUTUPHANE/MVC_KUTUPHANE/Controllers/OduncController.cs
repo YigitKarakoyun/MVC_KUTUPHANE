@@ -12,7 +12,8 @@ namespace MVC_KUTUPHANE.Controllers
         DBKUTUPHANEEntities db = Tool.GetKUTUPHANEEntities();
         public ActionResult Index()
         {
-            return View();
+            var temp = db.TBL_HAREKET.ToList();
+            return View(temp);
         }
         [HttpGet]
         public ActionResult OduncVer()

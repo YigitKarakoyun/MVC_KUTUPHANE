@@ -16,7 +16,7 @@ namespace MVC_KUTUPHANE
             routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}/{id}",
-                defaults: new { controller = "Kitap", action = "Index", id = UrlParameter.Optional }
+                defaults: new { controller = "Odunc", action = "Index", id = UrlParameter.Optional }
             );
         }
     }
