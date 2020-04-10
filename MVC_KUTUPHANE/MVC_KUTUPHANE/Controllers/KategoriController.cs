@@ -42,7 +42,6 @@ namespace MVC_KUTUPHANE.Controllers
         {
             TBL_KATEGORI p = db.TBL_KATEGORI.Find(id);
             return View(p);
-
         }
 
         [HttpPost]
@@ -52,7 +51,6 @@ namespace MVC_KUTUPHANE.Controllers
             temp.AD = p.AD;
             db.SaveChanges();
             return RedirectToAction("Index");
-
         }
     }
 }
